@@ -7,6 +7,7 @@ namespace CatMatch.Services.Ranking
 {
     public class RankingService : IRankingService
     {
+        public static readonly int DefaultElo = 1_500;
 
         public RankingService() { }
 

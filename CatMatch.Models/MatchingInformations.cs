@@ -11,6 +11,6 @@ namespace CatMatch.Models
         public int CatId { get; set; }
         public Cat Cat { get; set; }
 
-        public IList<Match> History { get; set; }
+        public IList<Match> History { get; set; } = new List<Match>();
     }
 }

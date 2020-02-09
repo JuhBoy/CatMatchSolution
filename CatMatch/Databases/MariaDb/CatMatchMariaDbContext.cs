@@ -1,6 +1,7 @@
 ﻿using CatMatch.Databases.MariaDb.Models;
 using CatMatch.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CatMatch.Databases.MariaDb
 {
@@ -38,6 +39,11 @@ namespace CatMatch.Databases.MariaDb
             });
         }
 
+        internal Cat FirstOrDefault()
+        {
+            throw new NotImplementedException();
+        }
+
         private static void CreateRank(ModelBuilder builder)
         {
             builder.Entity<Rank>(buildAction =>
@@ -57,7 +63,7 @@ namespace CatMatch.Databases.MariaDb
                 buildAction.Property(c => c.Id).HasColumnName("id");
                 buildAction.Property(c => c.MatchCount).HasColumnName("match_count");
                 buildAction.Property(c => c.Victories).HasColumnName("victories");
-                buildAction.Property(c => c.CatId).HasColumnName("cat_id");
+                buildAction.Property(c => c.CatId).HasColumnName("CatId");
                 buildAction.Ignore(c => c.History);
             });
         }
