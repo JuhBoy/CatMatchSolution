@@ -8,7 +8,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatMatch", "CatMatch\CatMat
 		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26} = {B39BFC6D-48C1-4CF2-991D-23BBA435DC26}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatMatch.Models", "CatMatch.Models\CatMatch.Models.csproj", "{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatMatch.Models", "CatMatch.Models\CatMatch.Models.csproj", "{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatMatch.Tests", "CatMatch.Tests\CatMatch.Tests.csproj", "{4E2E1BB9-B2DB-4B58-9C3B-7A6D1BAB8AE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E2E1BB9-B2DB-4B58-9C3B-7A6D1BAB8AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E2E1BB9-B2DB-4B58-9C3B-7A6D1BAB8AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E2E1BB9-B2DB-4B58-9C3B-7A6D1BAB8AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E2E1BB9-B2DB-4B58-9C3B-7A6D1BAB8AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
