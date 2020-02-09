@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatMatch", "CatMatch\CatMatch.csproj", "{21B6750B-A5F2-44A2-B96B-4D46154BEB78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatMatch", "CatMatch\CatMatch.csproj", "{21B6750B-A5F2-44A2-B96B-4D46154BEB78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatMatch.Models", "CatMatch.Models\CatMatch.Models.csproj", "{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{21B6750B-A5F2-44A2-B96B-4D46154BEB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21B6750B-A5F2-44A2-B96B-4D46154BEB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21B6750B-A5F2-44A2-B96B-4D46154BEB78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
