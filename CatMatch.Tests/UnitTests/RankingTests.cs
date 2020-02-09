@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
-using Moq;
 using CatMatch.Services.Ranking;
 using CatMatch.Tests.Fixtures.Models;
 
 namespace CatMatch.Tests.UnitTests
 {
-    public class RankingTests
+    public sealed class RankingTests
     {
 
         private IRankingService CreateService => new RankingService(RankingValues.Limit, RankingValues.EvolutionCoef);
