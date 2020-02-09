@@ -1,4 +1,6 @@
 using CatMatch.Extensions.Configuration;
+using CatMatch.Services;
+using CatMatch.Services.Ranking;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -21,6 +23,11 @@ namespace CatMatch
         {
             services.AddControllersWithViews();
             services.AddMariaDb(Configuration["MariaDb:ConnectionString"]);
+
+            services.AddSingleton<IHttpService, HttpService>();
+            services.AddScoped<IMatchService, MatchService>();
+            services.AddScoped<ICatService, CatService>();
+            services.AddScoped<IRankingService, RankingService>();
             
             services.AddSpaStaticFiles(configuration =>
             {
