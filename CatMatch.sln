@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatMatch", "CatMatch\CatMatch.csproj", "{21B6750B-A5F2-44A2-B96B-4D46154BEB78}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B39BFC6D-48C1-4CF2-991D-23BBA435DC26} = {B39BFC6D-48C1-4CF2-991D-23BBA435DC26}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatMatch.Models", "CatMatch.Models\CatMatch.Models.csproj", "{B39BFC6D-48C1-4CF2-991D-23BBA435DC26}"
 EndProject

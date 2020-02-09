@@ -20,7 +20,7 @@ namespace CatMatch
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMariaDb(Configuration["MariaDb::ConnectionString"]);
+            services.AddMariaDb(Configuration["MariaDb:ConnectionString"]);
             
             services.AddSpaStaticFiles(configuration =>
             {
