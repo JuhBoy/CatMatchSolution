@@ -27,7 +27,12 @@ namespace CatMatch
             services.AddSingleton<IHttpService, HttpService>();
             services.AddScoped<IMatchService, MatchService>();
             services.AddScoped<ICatService, CatService>();
-            services.AddScoped<IRankingService, RankingService>();
+            services.AddScoped<IRankingService, RankingService>(options =>
+            {
+                int limit = Configuration.GetValue<int>("Ranking:Limit");
+                int evolutionCoef = Configuration.GetValue<int>("Ranking:EvolutionCoef");
+                return new RankingService(limit, evolutionCoef);
+            });
             
             services.AddSpaStaticFiles(configuration =>
             {
