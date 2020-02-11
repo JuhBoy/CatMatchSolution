@@ -1,4 +1,5 @@
 ﻿using CatMatch.Extensions.Database;
+using CatMatch.Http.Models;
 using CatMatch.Models;
 using CatMatch.Services.Ranking;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,7 @@ namespace CatMatch.Services
             Cat right = await Context.Cats.IncludeSubModels().FirstOrDefaultAsync(c => c.Id == rightCatId).ConfigureAwait(false);
 
             if (left == null || right == null)
-                throw new ServiceException("Cat Id Invalid");
+                throw new ServiceException("Cat Id Invalid", ResponseCode.DatabaseNotFound);
 
             float leftEstimation = RankingService.GetEstimation(left.Rank.Elo, right.Rank.Elo);
             float rightEstimation = RankingService.GetEstimation(right.Rank.Elo, left.Rank.Elo);
@@ -56,7 +57,7 @@ namespace CatMatch.Services
             }
 
             if (superSet == null || superSet.Count < 2)
-                throw new ServiceException("Couldn't find a match");
+                throw new ServiceException("Couldn't find a match", ResponseCode.MatchDispersion);
 
             var ids = new MatchIds() { Left = 0, Right = 0 };
             ids.Left = seed.Next(0, superSet.Count);

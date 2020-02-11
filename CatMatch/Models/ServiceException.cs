@@ -4,8 +4,11 @@ namespace CatMatch.Models
 {
     public class ServiceException : Exception
     {
-        public ServiceException(string message) : base(message)
+        public int InternalCode { get; }
+
+        public ServiceException(string message, int internalCode) : base(message)
         {
+            InternalCode = internalCode;
         }
     }
 }

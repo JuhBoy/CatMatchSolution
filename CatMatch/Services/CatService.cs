@@ -1,4 +1,5 @@
 ﻿using CatMatch.Extensions.Models;
+using CatMatch.Http.Models;
 using CatMatch.Models;
 using CatMatch.Services.Filters;
 using Microsoft.EntityFrameworkCore;
@@ -102,7 +103,7 @@ namespace CatMatch.Services
             var response = await HttpService.Client.GetAsync(CatsApiEndPoint).ConfigureAwait(false);
 
             if (!response.IsSuccessStatusCode)
-                throw new ServiceException($"Can't fetch cats Reason: {response.ReasonPhrase}");
+                throw new ServiceException($"Can't fetch cats Reason: {response.ReasonPhrase}", ResponseCode.UnavailableService);
 
             string body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
