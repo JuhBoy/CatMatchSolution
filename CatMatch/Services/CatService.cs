@@ -35,6 +35,9 @@ namespace CatMatch.Services
                 .FirstOrDefaultAsync(c => c.Id.Equals(id))
                 .ConfigureAwait(false);
 
+            if (cat == null)
+                throw new ServiceException($"Entry not found for id {id}", ResponseCode.DatabaseNotFound);
+
             if (options != null && options.IncludeMatchHistory)
             {
                 cat.Informations.History = Context.MatchCats.AsNoTracking()

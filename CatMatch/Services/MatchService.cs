@@ -36,6 +36,9 @@ namespace CatMatch.Services
             left.Rank.Elo = RankingService.GetNewElo(left.Rank.Elo, leftEstimation, leftCatId == winnerId);
             right.Rank.Elo = RankingService.GetNewElo(right.Rank.Elo, rightEstimation, rightCatId == winnerId);
 
+            left.Informations.MatchCount += 1;
+            right.Informations.MatchCount += 1;
+
             Context.Cats.UpdateRange(left, right);
             await Context.SaveChangesAsync().ConfigureAwait(false);
         }
