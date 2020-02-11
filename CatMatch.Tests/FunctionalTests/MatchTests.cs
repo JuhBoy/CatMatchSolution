@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -28,7 +29,7 @@ namespace CatMatch.Tests.FunctionalTests
 
                 var elos = await LoadElo(cat1, cat2, dbContext).ConfigureAwait(false);
 
-                await service.Match(cat1, cat2, winner).ConfigureAwait(false);
+                await service.MatchAsync(cat1, cat2, winner).ConfigureAwait(false);
 
                 var newElos = await LoadElo(cat1, cat2, dbContext).ConfigureAwait(false);
 
@@ -37,11 +38,35 @@ namespace CatMatch.Tests.FunctionalTests
             }
         }
 
+        [Fact]
+        public async Task ShouldFindMatch_WhenCatsAreAvailable()
+        {
+            using (var dbContext = DbContextFixture.GetDbContext())
+            {
+                IMatchService service = new MatchService(dbContext, new RankingService(RankingValues.Limit, RankingValues.EvolutionCoef));
+                ICatService catService = new CatService(new HttpService(), dbContext, IConfigMock.GetCatsMock());
+                await catService.InjectCats().ConfigureAwait(false); // Prepare cats
+
+                MatchIds matchIds = await service.FindMatchAsync().ConfigureAwait(false);
+
+                Assert.NotEqual(0, matchIds.Left);
+                Assert.NotEqual(0, matchIds.Right);
+            }
+        }
+
         private async Task<(int EloLeft, int EloRight)> LoadElo(int leftId, int rightId, CatMatchMariaDbContext context)
         {
-            Cat left = await context.Cats.IncludeSubModels().AsNoTracking().FirstOrDefaultAsync(c => c.Id == leftId).ConfigureAwait(false);
-            Cat right = await context.Cats.IncludeSubModels().AsNoTracking().FirstOrDefaultAsync(c => c.Id == rightId).ConfigureAwait(false);
-            return (left.Rank.Elo, right.Rank.Elo);
+            var left = await context.Cats.IncludeSubModels().AsNoTracking()
+                .Select(e => new { Id = e.Id, Elo = e.Rank.Elo })
+                .FirstOrDefaultAsync(c => c.Id == leftId)
+                .ConfigureAwait(false);
+
+            var right = await context.Cats.IncludeSubModels().AsNoTracking()
+                .Select(e => new { Id = e.Id, Elo = e.Rank.Elo })
+                .FirstOrDefaultAsync(c => c.Id == rightId)
+                .ConfigureAwait(false);
+
+            return (left.Elo, right.Elo);
         }
     }
 }

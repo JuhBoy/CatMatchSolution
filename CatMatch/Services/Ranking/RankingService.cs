@@ -20,7 +20,7 @@ namespace CatMatch.Services.Ranking
             EvolutionCoef = evolutionCoef;
         }
 
-        private int Limit { get; }
+        public int Limit { get; }
         private int EvolutionCoef { get; }
 
         public float GetEstimation(int eloA, int eloB)

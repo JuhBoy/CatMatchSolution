@@ -16,7 +16,9 @@ namespace CatMatch.Tests.Fixtures.Accessors
             {
                 actions.ServerVersion(new Version(10, 3, 14), ServerType.MariaDb);
             });
-            return new CatMatchMariaDbContext(options.Options);
+            var context = new CatMatchMariaDbContext(options.Options);
+            context.Database.EnsureCreated();
+            return context;
         }
     }
 }
