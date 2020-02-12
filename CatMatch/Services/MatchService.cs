@@ -39,6 +39,11 @@ namespace CatMatch.Services
             left.Informations.MatchCount += 1;
             right.Informations.MatchCount += 1;
 
+            if (left.Id == winnerId)
+                left.Informations.Victories += 1;
+            else
+                right.Informations.Victories += 1;
+
             Context.Cats.UpdateRange(left, right);
             await Context.SaveChangesAsync().ConfigureAwait(false);
         }

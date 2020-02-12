@@ -1,0 +1,17 @@
+<div *ngIf="currentMatch; else loading" class="fluid-container">
+    <h1 class="text-center">Let the Match Begin</h1>
+    <div class="row">
+        <div class="col-md-6 media figure d-flex flex-column align-items-center p-3">
+            <img src="{{currentMatch.left.imageLink}}" alt="image" class="img-thumbnail" height="200">
+            <button (click)="resolveMatch(currentMatch.left)" class="mt-2 btn btn-success">Je gagne!</button>
+        </div>
+        <div class="col-md-6 media figure d-flex flex-column align-items-center p-3">
+            <img src="{{currentMatch.right.imageLink}}" alt="image" class="img-thumbnail" height="200">
+            <button (click)="resolveMatch(currentMatch.right)" class="mt-2 btn btn-success">Je gagne!</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <h2 class="text-center">Loading...</h2>
+</ng-template>

@@ -10,6 +10,10 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <Authors>BOYER Julien</Authors>
+    <Company>SoftSquare</Company>
+    <Description>A simple app about cats.</Description>
+    <Copyright>///</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
