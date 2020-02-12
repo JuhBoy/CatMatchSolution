@@ -28,7 +28,7 @@ namespace CatMatch.Extensions.Models
                 Informations = new MatchingInformations()
                 {
                     MatchCount = 0,
-                    Victories = 1
+                    Victories = 0
                 },
                 Rank = new Rank()
                 {

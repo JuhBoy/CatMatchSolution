@@ -21,7 +21,7 @@ namespace CatMatch.Services.Filters
         {
             query = FilterCatElo(query);
             query = FilterCatWinRate(query);
-            query = query.OrderBy(c => c.Rank.Elo);
+            query = query.OrderByDescending(c => c.Rank.Elo);
             query = FilterMinMax(query);
         }
 

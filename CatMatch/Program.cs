@@ -28,7 +28,7 @@ namespace CatMatch
                     dbContext.Database.EnsureCreated();
 
                     var catsService = services.GetRequiredService<ICatService>();
-                    catsService.InjectCats();
+                    catsService.InjectCats().GetAwaiter().GetResult();
 
                 } catch (Exception ex)
                 {

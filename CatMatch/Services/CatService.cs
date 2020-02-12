@@ -96,9 +96,16 @@ namespace CatMatch.Services
         private IEnumerable<CatEp> FilterCatsInBase(CatsEpResponse catsFromEndPoint)
         {
             IEnumerable<string> catUrls = catsFromEndPoint.Images.Select(e => e.Url);
-            IDictionary<string, int> exclusionMap = Context.Cats.Where(cat => catUrls.Contains(cat.ImageLink)).ToDictionary(c => c.ImageLink, c => c.Id);
-            IEnumerable<CatEp> newCats = catsFromEndPoint.Images.Where(cat => !exclusionMap.ContainsKey(cat.Url));
-            return newCats;
+
+            if (Context.Cats.Count() > 0)
+            {
+                IDictionary<string, int> exclusionMap = Context.Cats.Where(cat => catUrls.Contains(cat.ImageLink)).ToDictionary(c => c.ImageLink, c => c.Id);
+                IEnumerable<CatEp> newCats = catsFromEndPoint.Images.Where(cat => !exclusionMap.ContainsKey(cat.Url));
+                return newCats;
+            } else
+            {
+                return catsFromEndPoint.Images;
+            }
         }
 
         private async Task<string> LoadCatsFromApi()
